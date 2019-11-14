@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project">
+
+<!-- 프로젝트 등록 -->
+<insert id="register" parameterType="Project">
+	insert into project(id, title, content, image)
+	values(#{id}, #{title}, #{content}, #{image})
+</insert>
+
+<!-- id 중복 확인 -->
+<select id="projectlist" resultType="Project">
+	select *
+	from project
+</select>
+
+<!-- 로그인 -->
+<select id="login" parameterType="java.lang.String" resultType="User">
+	select *
+	from user
+	where id = #{id}
+</select>
+</mapper>

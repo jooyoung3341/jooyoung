@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+	
+	<!-- 보통 데이터베이스 설정과 관련된 내용을 작성합니다. -->
+      <!--  MySQL 연동 -->
+      <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" 	 value="com.mysql.cj.jdbc.Driver" />
+            																<!-- MySQL 5.7버전 이 후 부터는 기본적으로 SSL설정이 true로 되있음. 									pk 검색가능하게-->
+            <property name="url"                 value="jdbc:mysql://localhost:3306/yoonjooyoung?characterEncoding=UTF8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true" />
+            <property name="username"            value="root" />
+            <property name="password"            value="920424" />
+      </bean>
+      
+      <!--  MyBatis 접속정보를 저장하는 클래스의 객체 생성 -->
+      <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+            <property name="dataSource" ref="dataSource" />
+            <property name="configLocation" value="classpath:/mybatis/mybatis-config.xml" />
+            <property name="mapperLocations" value="classpath:/mybatis/mappers/*.xml" />
+      </bean> 
+      
+      <!-- SQL을 실행할 클래스의 객체 생성 -->
+      <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+            <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+      </bean>  
+
+
+</beans>
