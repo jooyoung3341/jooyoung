@@ -8,8 +8,8 @@
 </head>
 <body>
 <%@include file="../include/header.jsp"%>
-<c:set var="i" value="0"/>
-<c:set var="j" value="3"/>
+<c:set var="i" value="1"/>
+<c:set var="j" value="1"/>
 <div class="row">
     <div class="col-md-3"></div>
     
@@ -18,6 +18,15 @@
         <a href="${pageContext.request.contextPath}/project/register"><button type="button" class="btn btn-default" >프로젝트 등록</button></a>
         <div id="table"></div>
         <c:forEach var="list" items="${projectlist}">
+        <div id="table">
+        <div class="row">
+        	11
+        	12
+        	13
+        	    	
+        </div>
+        </div>
+        
         <c:if test="${i%j == 0}">
         	<tr>	
         </c:if>
