@@ -40,7 +40,7 @@ public class ProjectServiceImpl implements ProjectService {
 		*/
 		//getRealPath("/"); 는 webapp폴더까지를 의미
 		@SuppressWarnings("deprecation")
-		String uploadPath = request.getRealPath("/image");
+		String uploadPath = request.getRealPath("resources/image");
 		//UUID : 중복되지 않은 고유한 키 값
 		UUID uid = UUID.randomUUID();
 		//getOriginalFilename() : 업로드 한 파일의 실제 이름을 구함
