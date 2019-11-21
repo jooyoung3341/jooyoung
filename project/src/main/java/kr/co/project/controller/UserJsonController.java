@@ -18,7 +18,6 @@ public class UserJsonController {
 	private UserService userService;
 	
 	//id 중복 확인
-	
 	@RequestMapping(value="user/idcheck")
 	public Map<String, Object> idCheck(HttpServletRequest request ){
 		String id = userService.idCheck(request);

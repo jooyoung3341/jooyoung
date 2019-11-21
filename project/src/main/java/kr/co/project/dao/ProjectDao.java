@@ -23,4 +23,9 @@ public class ProjectDao {
 	public List<Project> projectlist(){
 		return sqlSession.selectList("project.projectlist");
 	}
+	
+	//프로젝트 상세보기
+	public Project detail(int pno) {
+		return sqlSession.selectOne("project.detail", pno);
+	}
 }

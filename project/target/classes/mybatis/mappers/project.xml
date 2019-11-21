@@ -10,12 +10,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	values(#{id}, #{title}, #{content}, #{image})
 </insert>
 
-<!-- id 중복 확인 -->
+<!-- 프로젝트 목록 -->
 <select id="projectlist" resultType="Project">
-	select *
+	select pno, title, image
 	from project
 </select>
 
+<!--프로젝트 상세보기  -->
+<select id="detail" parameterType="java.lang.Integer" resultType="Project">
+	select *
+	from project
+	where pno = #{pno}
+</select>
 <!-- 로그인 -->
 <select id="login" parameterType="java.lang.String" resultType="User">
 	select *

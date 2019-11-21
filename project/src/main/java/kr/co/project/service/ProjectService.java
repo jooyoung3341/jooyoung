@@ -16,4 +16,7 @@ public interface ProjectService {
 	
 	//프로젝트 목록
 	public List<Project> projectlist(HttpServletRequest request);
+	
+	//프로젝트 상세보기
+	public Project detail(HttpServletRequest request);
 }

@@ -68,4 +68,10 @@ public class ProjectServiceImpl implements ProjectService {
 		List<Project> plist = projectDao.projectlist();
 		return plist;
 	}
+
+	@Override
+	public Project detail(HttpServletRequest request) {
+		String pno = request.getParameter("pno");
+		return projectDao.detail(Integer.parseInt(pno));
+	}
 }
