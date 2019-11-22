@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--프로젝트 상세보기  -->
 <select id="detail" parameterType="java.lang.Integer" resultType="Project">
-	select *
+	select title, image, content
 	from project
 	where pno = #{pno}
 </select>
