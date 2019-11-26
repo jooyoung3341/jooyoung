@@ -27,6 +27,12 @@
         vertical-align: middle;
 }
 
+#footer1 {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+}
+
 </style>
 <meta charset="UTF-8">
 <title>프로젝트</title>
@@ -70,48 +76,30 @@
 
      <div class="col-md-2"></div> 
 </div>
-
-<!-- <div id="detaildisp" style="sidplay:none">
-</div> -->
-<!-- Modal -->
-<!--   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"'>
-  <div class="modal-dialog" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <cite class="modal-title" id="myModalLabel">zzz</cite>
-      </div>
-      <div class="modal-body" id="modalcontent">
-        Modal 내용
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div>
-  </div> -->
          
          <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="diglog" aria-labelledby="myModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-lg">
          	<div class="modal-content">
-         		 	<div class="modal-footer">
-         		 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times; </span></button>        
-         		 	</div>
+     
          	<div class="row">
          		 <div class="col-md-3">
-         		 	<div class="header" id="imgdiv">
-					 		 	
+         		 	<div id="imgdiv">
          		 	</div>
          		 </div> 
          		 
          		 <div class="col-md-6">
-         		 	<div class="modal-body" id="modalcontent">
+         		 	<div class="container" id="modaltitle"></div>
+         		 	<div class="container" id="modalcontent">&nbsp&nbsp
          		 	
-         		 	</div>
+         		 		
+        		 </div>
+        		 <div id="footer1">
+         		 			<button type="button" class="btn btn-default">Git</button>
+         		 		</div>
          		 </div> 
          		 
          		 <div class="col-md-2">
-         		 	<div>
+         		 	<div id="modalversion">
          		 			zzzz
          		 	</div>
          		 </div> 
@@ -125,27 +113,11 @@
 alert("${pregistermsg}");
 </script>
 </c:if>
-<!-- 
-				disp = ' ';
-				disp += "<div class='modal fade' id='myModal' tabindex=''-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>";
-				disp += "<div class='modal-dialog'>";
-				disp += "<div class='modal-content'>";
-				disp += "<div class='modal-header'>";
-				disp += "<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>";
-				disp += "<cite class='modal-title' id='myModalLabel'>zzz</cite>";
-				disp += "</div>";
-				disp += "<div class='modal-body'>";
-				disp += data.title;
-				disp += "</div>";
-				disp += "<div class='modal-footer'>";
-				disp += "<button type='button' class='btn btn-default' data-dismiss='modal'>닫기</button>";
-				disp += "</div>";
-				disp += "</div>";
-				disp += "</div></div>";
-				document.getElementById("detaildisp").innerHTML = disp; -->
+
 <script>
 
 	$(document).ready(function (){
+		var disp = '';
 		$('img').click(function(){
 			var $detail = $(this).attr('id');
 			var pno = $('#'+$detail).attr('value');
@@ -156,8 +128,9 @@ alert("${pregistermsg}");
 			dataType : 'json',
 			success : function(data){											       
 				document.getElementById("imgdiv").innerHTML = "<img src='${pageContext.request.contextPath}/resources/image/"+data.image+"'/ width='250' height='250'>";
-				document.getElementById('modalcontent').innerHTML= "<div class='modal-body'>"+data.title+"</div>";
-				$('#myModal').modal();
+				document.getElementById("modaltitle").innerHTML = "<h3>&nbsp&nbsp"+data.title+"</h3>";
+				document.getElementById("modalcontent").innerHTML = "<small>&nbsp&nbsp"+data.content+"</small>"; 
+				$('#myModal').modal();      
 				},
 			error : function(){
 					alert("실패");
