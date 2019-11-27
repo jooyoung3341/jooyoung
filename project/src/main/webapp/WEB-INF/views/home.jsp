@@ -14,7 +14,7 @@
     <div class="col-md-6">
 		<ul class="nav nav-pills nav-justified">
   			<li><a href="${pageContext.request.contextPath}/project/project">프로젝트</a></li>
-  			<li><a href="#">방명록</a></li>
+  			<li><a href="${pageContext.request.contextPath}/guestbook/guestbook">방명록</a></li>
 		</ul>
     </div>
 

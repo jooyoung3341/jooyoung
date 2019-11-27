@@ -27,12 +27,28 @@
         vertical-align: middle;
 }
 
-#footer1 {
+#footer {
 		position: absolute;
 		bottom: 0px;
 		right: 0px;
 }
+#footer1 {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+}
 
+#modalversion{
+		white-space: normal;
+}
+
+#center{
+		height: 250px;
+}
+
+#right{
+		height: 250px;
+}
 </style>
 <meta charset="UTF-8">
 <title>프로젝트</title>
@@ -54,21 +70,17 @@
         <br/><br/>
         <c:if test="${i%j == 0}">
        		<p class="row1">
-        </c:if><!-- data-toggle="modal" data-target="#myModal"  -->
+        </c:if>
         	<span class="cell col1">
         		<a href="#"><img src="${pageContext.request.contextPath}/resources/image/${list.image}"/ width="320" height="250"
         							     id="detail${status.index}" value="${list.pno}" class="detail"></a>
-        		&nbsp&nbsp&nbsp<%-- 
-        		<button type="button" id="detail${status.index}" value="${list.pno}" onclick="detailbtn(this)">
-        			
-        		</button>  onclick="detailbtn(this)" --%>
+        		&nbsp&nbsp&nbsp
         		<cite id="title">${list.title} / ${list.pno}</cite>
         	</span>
  	    <c:set var="i" value="${i+1}"/>      
         <c:if test="${i%j == 0}">
         	</p>
-        </c:if><!-- 
-       -->
+        </c:if>
 
       	  </c:forEach>
         </div>
@@ -87,20 +99,26 @@
          		 	</div>
          		 </div> 
          		 
-         		 <div class="col-md-6">
+         		 <div class="col-md-6" id="center">
          		 	<div class="container" id="modaltitle"></div>
          		 	<div class="container" id="modalcontent">&nbsp&nbsp
-         		 	
-         		 		
-        		 </div>
-        		 <div id="footer1">
+         		 		<div id="footer">
+         		 			<button type="button" class="btn btn-default">Link</button>
          		 			<button type="button" class="btn btn-default">Git</button>
          		 		</div>
+        		 </div>
+        		
          		 </div> 
          		 
-         		 <div class="col-md-2">
-         		 	<div id="modalversion">
-         		 			zzzz
+         		 <div class="col-md-2" id="right">
+         		 	<p id="modalversion">
+       
+         		 	zzzzzs dkflj ksdlafjkldsjfklsdajflksj dklfs ldafkl skldjlfjl sdajfl
+    
+         		 			
+         		 	</p>
+         		 	<div id="footer1">
+         		 		<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
          		 	</div>
          		 </div> 
          	</div>
@@ -129,7 +147,7 @@ alert("${pregistermsg}");
 			success : function(data){											       
 				document.getElementById("imgdiv").innerHTML = "<img src='${pageContext.request.contextPath}/resources/image/"+data.image+"'/ width='250' height='250'>";
 				document.getElementById("modaltitle").innerHTML = "<h3>&nbsp&nbsp"+data.title+"</h3>";
-				document.getElementById("modalcontent").innerHTML = "<small>&nbsp&nbsp"+data.content+"</small>"; 
+			/* 	document.getElementById("modalcontent").innerHTML = "<small>&nbsp&nbsp"+data.content+"</small>";  */
 				$('#myModal').modal();      
 				},
 			error : function(){
@@ -139,25 +157,7 @@ alert("${pregistermsg}");
 		})
 	});
 		
-function getDetail(data){
-	disp = ' ';
-	disp += "<div class='modal fade' id='myModal' tabindex=''-1' role='dialog' aria-labelledby='myModalLabel'>";
-	disp += "<div class='modal-dialog' role='document'>";
-	disp += "<div class='modal-content'>";
-	disp += "<div class='modal-header'>";
-	disp += "<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>";
-	disp += "<cite class='modal-title' id='myModalLabel'>zzz</cite>";
-	disp += "</div>";
-	disp += "<div class='modal-body'>";
-	disp += '${data.title}';
-	disp += "</div>";
-	disp += "<div class='modal-footer'>";
-	disp += "<button type='button' class='btn btn-default' data-dismiss='modal'>닫기</button>";
-	disp += "</div>";
-	disp += "</div>";
-	disp += "</div></div>";
-	document.getElementById("detaildisp").innerHTML = disp;
-};
+
 </script>
 </body>
 </html>
