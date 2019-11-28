@@ -136,19 +136,19 @@ alert("${pregistermsg}");
 
 	$(document).ready(function (){
 		var disp = '';
-		$('img').click(function(){
+		$("img").click(function(){
 			var $detail = $(this).attr('id');
 			var pno = $('#'+$detail).attr('value');
 		
 		$.ajax({
-			url : 'detail',
-			data : {'pno' : pno},
-			dataType : 'json',
+			url : "detail",
+			data : {"pno" : pno},
+			dataType : "json",
 			success : function(data){											       
 				document.getElementById("imgdiv").innerHTML = "<img src='${pageContext.request.contextPath}/resources/image/"+data.image+"'/ width='250' height='250'>";
 				document.getElementById("modaltitle").innerHTML = "<h3>&nbsp&nbsp"+data.title+"</h3>";
 			/* 	document.getElementById("modalcontent").innerHTML = "<small>&nbsp&nbsp"+data.content+"</small>";  */
-				$('#myModal').modal();      
+				$("#myModal").modal();      
 				},
 			error : function(){
 					alert("실패");
