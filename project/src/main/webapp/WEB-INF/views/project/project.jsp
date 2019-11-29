@@ -2,12 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head>																									
+
 <style type="text/css">
-#table {display: table; width: 100%;}
-.row1 {display: table-row;}
-.cell {display: table-cell; padding: 3px; border-bottom: 1px solid #DDD;}
-.col1 {width: 20%;}
 .modal {
         text-align: center;
 }
@@ -50,8 +47,10 @@
 		height: 250px;
 }
 </style>
+
 <meta charset="UTF-8">
 <title>프로젝트</title>
+<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/resources/css/table.css">
 </head>
 <body>
 <%@include file="../home.jsp"%>

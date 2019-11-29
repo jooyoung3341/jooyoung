@@ -1,0 +1,5 @@
+@charset "UTF-8";
+#table {	display: table; width: 100%;}
+.row1 {display: table-row;	}
+.cell {display: table-cell; padding: 3px; border-bottom: 1px solid #DDD;	}
+.col1 {width: 20%;	}

@@ -7,7 +7,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml
-					 /WEB-INF/spring/spring-security.xml</param-value>
+						   /WEB-INF/spring/spring-security.xml</param-value>
 	</context-param>
 	
 	<!-- listener: 프로젝트 실행 및 종료될 때 수행	context-param에 설정된 spring bean configuration 파일의 내용을 읽어서 프로젝트 내의 모든 곳에서 사용할 수 있도록
@@ -30,6 +30,11 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
 	</servlet-mapping>
 
 	<!-- 파라미터 인코딩 필터를 설정 
