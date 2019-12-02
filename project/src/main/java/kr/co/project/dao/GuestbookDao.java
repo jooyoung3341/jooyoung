@@ -14,6 +14,6 @@ public class GuestbookDao {
 	
 	//방명록 등록
 	public int register(Guestbook guestbook) {
-		return sqlSession.insert("questbook.register", guestbook);
+		return sqlSession.insert("guestbook.register", guestbook);
 	}
 }

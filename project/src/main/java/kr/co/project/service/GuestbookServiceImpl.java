@@ -26,6 +26,7 @@ public class GuestbookServiceImpl implements GuestbookService {
 		
 		String id = request.getParameter("id");
 		String content = request.getParameter("content");
+		System.out.println(content);
 		String insert_date = format.format(time.getTime());
 		
 		Guestbook guestbook = new Guestbook();

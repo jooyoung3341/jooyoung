@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="css/table.css" href="${pageContext.request.contextPath}/resources/css/table.css">
 <style type="text/css">
 #topdiv {
 		position: absolute;
@@ -18,6 +18,7 @@
 <meta charset="UTF-8">
 
 <title>방명록</title>
+
 </head>
 <body>
 <%@include file="../home.jsp"%>
@@ -51,7 +52,7 @@
 				<div class="form-group">
 					<textarea class="form-control" id="content" name="content" placeholder="Content" required="required" rows="5"></textarea>
 				</div>
-				<button type="button" class="btn btn-default" id="guestbook"></button>
+				<button type="button" class="btn btn-default" id="guestbook" data-dismiss="modal"></button>
 			</form>
 			</div>
 		</div>
@@ -71,10 +72,11 @@ $(document).ready(function(){
 })       
 
 $(document).ready(function(){
-	var content = $("#content").attr("id");
+	var content = $("#content").val();
+	
 	$("#guestbook").click(function(){
 			$.ajax({
-					url : "guestbook/register",
+					url : "register",
 					type : "POST",
 					data : {"id" : "${user.id}",
 							   "content" : content},

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>																									
-
+<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/resources/css/table.css">
 <style type="text/css">
 .modal {
         text-align: center;
@@ -50,7 +50,6 @@
 
 <meta charset="UTF-8">
 <title>프로젝트</title>
-<link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/resources/css/table.css">
 </head>
 <body>
 <%@include file="../home.jsp"%>

@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 방명록 등록 -->
 <insert id="register" parameterType="Guestbook">
-	insert into project(id, content, insert_date)
-	values(#{id}, #{content}, insert_date)
+	insert into guestbook(id, content, insert_date)
+	values(#{id}, #{content}, #{insert_date})
 </insert>
 
 <!-- 프로젝트 목록 -->
