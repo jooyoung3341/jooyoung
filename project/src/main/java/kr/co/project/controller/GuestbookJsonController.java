@@ -1,6 +1,7 @@
 package kr.co.project.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.project.domain.Guestbook;
 import kr.co.project.service.GuestbookService;
 
 @RestController
@@ -17,6 +19,13 @@ public class GuestbookJsonController {
 
 	@Autowired
 	private GuestbookService guestbookService;
+	
+	//방명록 목록
+	@RequestMapping(value="guestbook/list", method=RequestMethod.GET)
+	public List<Guestbook> guestbook(HttpServletRequest request) {
+		return guestbookService.guestbooklist(request);
+		
+	}
 	
 	//방명록 쓰기
 	@RequestMapping(value="guestbook/register", method=RequestMethod.POST)

@@ -22,6 +22,9 @@
 </head>
 <body>
 <%@include file="../home.jsp"%>
+<c:set var="i" value="4"/>
+<c:set var="j" value="4"/>
+
 <div class="row">
     <div class="col-md-2"></div>
     
@@ -29,8 +32,22 @@
 	    <div id="topdiv">
 	   		<button type="button" class="btn btn-default btn-block" id="guestbookadd">방명록 쓰기</button>
 	    </div>
+	    
 	    <div id="table">
-	    	<div id="guestbooklist"></div>
+			<div id="guestbooklist">
+	    	<c:forEach var="list" items="${guestbooklist}">
+	    	<c:if test="${i%j == 0}">
+	    		<p class="row1">
+	    	</c:if>
+	    	<span class="cell col1">
+	    		<cite>${list.content}</cite>
+	    	</span>
+	    	<c:set var="i" value="${i+1}"/>
+	    	<c:if test="${i%j == 0}">
+	    		</p>
+	    	</c:if>
+	    	</c:forEach>
+	    	</div>
 	    </div>
     </div>
 		
@@ -58,9 +75,8 @@
 		</div>
 	</div>
 
-
-
 <script>
+
 
 $(document).ready(function(){
 	$("#guestbookadd").click(function(){
@@ -72,9 +88,8 @@ $(document).ready(function(){
 })       
 
 $(document).ready(function(){
-	var content = $("#content").val();
-	
 	$("#guestbook").click(function(){
+	var content = $("textarea#content").val();
 			$.ajax({
 					url : "register",
 					type : "POST",
@@ -82,32 +97,58 @@ $(document).ready(function(){
 							   "content" : content},
 					dataType : "json",
 					success : function(data){
-							getGuestbook(data);
+					
+						 	getGuestbook(data); 
 						}
 				})
 		});
 });
 
-function getGuestbook(data){
+function getGuestbooklist(data){
 	var i = 3;
 	var j = 3;
 	var disp = "";
+/* 	disp += "<c:forEach var='list' items='${guestbooklist}'>";
+	disp += "<c:if test='${i%j == 0}'>";
+	disp += "<p class='row1'>";
+	disp += "</c:if>";
+	disp += "<span class='cell col1'>";
+	disp +=  "<cite>${list.content}</cite>";
+	disp += "</span>";
+	disp += "<c:set var='i' value='${i+1}'/>";
+	disp += "<c:if test='${i%j == 0}'>";
+	disp += "</p>";
+	disp += "</c:if>";
+	disp += "</c:forEach>"; */
+/* 	$("#guestbooklist").html(disp);  */
 	
 	$(data).each(function(idx, item){
 	if(i%j == 0){
 			disp += "<p class='row1'>";	
 		}
 	disp += "<span class='cell cel1'>";
-	disp += "<cite>"+item.id+"</cite>";
+	disp += "<cite>"+item.content+"</cite>";
 	disp += "</span>";
 	i += 1;
 	if(i%j == 0){
 			disp += "</p>";
 		}
-	});
-	$("#guestbooklist").innerHTML = disp;
+	});   
+	document.getElementById("guestbooklist").innerHTML = disp;/* 
+	$("#guestbooklist").innerHTML = disp;  */
 }
 
+function getGuestbook(data){
+	$.ajax({
+			url : "list",
+			dataType : "json",
+			success : function(data){
+					getGuestbooklist(data)
+				}
+			
+		})
+	
+}
 
 		
 </script>

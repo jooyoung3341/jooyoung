@@ -2,6 +2,7 @@ package kr.co.project.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,9 +18,10 @@ public class GuestbookServiceImpl implements GuestbookService {
 	@Autowired
 	private GuestbookDao guestbookDao;
 
+	//방명록 등록
 	@Override
 	public boolean register(HttpServletRequest request) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar time = Calendar.getInstance();
 		
 		boolean result = false;
@@ -39,5 +41,12 @@ public class GuestbookServiceImpl implements GuestbookService {
 		if(r > 0)
 			result = true;
 		return result;
+	}
+
+	//방명록 목록
+	@Override
+	public List<Guestbook> guestbooklist(HttpServletRequest request) {
+		/* List<Guestbook> guestbooklist = guestbookDao.guestbooklist(); */
+		return guestbookDao.guestbooklist(); 
 	}
 }

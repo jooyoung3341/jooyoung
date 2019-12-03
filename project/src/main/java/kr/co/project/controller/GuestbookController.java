@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.project.domain.Guestbook;
 import kr.co.project.domain.Project;
 import kr.co.project.service.GuestbookService;
 
@@ -22,6 +23,8 @@ public class GuestbookController {
 	//방명록 목록
 	@RequestMapping(value="guestbook/guestbook", method=RequestMethod.GET)
 	public String guestbooklist(Model model, HttpServletRequest request) {
+		List<Guestbook> guestbooklist = guestbookService.guestbooklist(request);
+		model.addAttribute("guestbooklist", guestbooklist);
 		return "guestbook/guestbook";
 	}
 

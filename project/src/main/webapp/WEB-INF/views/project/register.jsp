@@ -34,7 +34,7 @@
 				<img id="img" width="300" height="300" border="1"/>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputName2">프로젝트 내용</label>
+				<label for="exampleInputNam@e2">프로젝트 내용</label>
 				<textarea class="form-control" name="content" placeholder="Content" required="required" rows="5" ></textarea>
 			</div>
 			<button type="submit" class="btn btn-default">작성완료</button>

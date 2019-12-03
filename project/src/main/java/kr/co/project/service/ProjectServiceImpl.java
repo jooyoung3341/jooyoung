@@ -63,12 +63,14 @@ public class ProjectServiceImpl implements ProjectService {
 			}
 	}
 
+	//프로젝트 목록
 	@Override
 	public List<Project> projectlist(HttpServletRequest request) {
-		List<Project> plist = projectDao.projectlist();
-		return plist;
+		List<Project> projectlist = projectDao.projectlist();
+		return projectlist;
 	}
 
+	//프로젝트 상세보기
 	@Override
 	public Project detail(HttpServletRequest request) {
 		String pno = request.getParameter("pno");
