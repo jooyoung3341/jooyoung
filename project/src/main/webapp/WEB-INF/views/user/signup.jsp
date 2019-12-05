@@ -56,9 +56,11 @@ var idcheck = false;
 //id중복체크 함수
 function confirmId(){
 	//id에 입력된 값 가져오기
-	var id = document.getElementById("id").value;
+	var id = $("#id").val();
+	//var id = document.getElementById("id").value;
 	//메시지 출력 영역 가져오기
-	var iddiv = document.getElementById("iddiv");
+	var iddiv = $("iddiv").val();
+	//var iddiv = document.getElementById("iddiv");
 	$.ajax({
 			url : 'idcheck',
 			data : { "id" : id}, 

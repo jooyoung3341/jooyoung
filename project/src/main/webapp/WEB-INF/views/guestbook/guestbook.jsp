@@ -105,22 +105,9 @@ $(document).ready(function(){
 });
 
 function getGuestbooklist(data){
-	var i = 3;
-	var j = 3;
+	var i = 4;
+	var j = 4;
 	var disp = "";
-/* 	disp += "<c:forEach var='list' items='${guestbooklist}'>";
-	disp += "<c:if test='${i%j == 0}'>";
-	disp += "<p class='row1'>";
-	disp += "</c:if>";
-	disp += "<span class='cell col1'>";
-	disp +=  "<cite>${list.content}</cite>";
-	disp += "</span>";
-	disp += "<c:set var='i' value='${i+1}'/>";
-	disp += "<c:if test='${i%j == 0}'>";
-	disp += "</p>";
-	disp += "</c:if>";
-	disp += "</c:forEach>"; */
-/* 	$("#guestbooklist").html(disp);  */
 	
 	$(data).each(function(idx, item){
 	if(i%j == 0){
@@ -133,9 +120,8 @@ function getGuestbooklist(data){
 	if(i%j == 0){
 			disp += "</p>";
 		}
-	});   
-	document.getElementById("guestbooklist").innerHTML = disp;/* 
-	$("#guestbooklist").innerHTML = disp;  */
+	});  
+	$("#guestbooklist").html(disp);
 }
 
 function getGuestbook(data){
@@ -145,9 +131,7 @@ function getGuestbook(data){
 			success : function(data){
 					getGuestbooklist(data)
 				}
-			
-		})
-	
+		});
 }
 
 		
