@@ -59,7 +59,7 @@ function confirmId(){
 	var id = $("#id").val();
 	//var id = document.getElementById("id").value;
 	//메시지 출력 영역 가져오기
-	var iddiv = $("iddiv").val();
+	var iddiv = $("#iddiv").val();
 	//var iddiv = document.getElementById("iddiv");
 	$.ajax({
 			url : 'idcheck',
@@ -96,8 +96,10 @@ function signupcheck(){
 			return false;
 		}
 
-	var pw = document.getElementById("pw");
-	var confirmpw = document.getElementById("confirmpw");
+	//var pw = document.getElementById("pw");
+	var pw = $("#pw").val();
+	var confirmpw = $("#confirmpw").val();
+	//var confirmpw = document.getElementById("confirmpw");
 	//비밀번호 정규식 - 숫자, 영문자 5자이상
 	var p1 = /[0-9]/;
 	var p2 = /[a-zA-Z]/;

@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/table.css" href="${pageContext.request.contextPath}/resources/css/table.css">
 <style type="text/css">
 #topdiv {
 		position: absolute;
@@ -11,14 +10,11 @@
 		text-align: center;
 		width: 100%;
 }
-#guestbookadd{
-		
-}
 </style>
 <meta charset="UTF-8">
 
-<title>방명록</title>
-
+<title>방명록</title>																						
+<link rel="stylesheet" href="css/table.css" href="${pageContext.request.contextPath}/resources/css/table.css">
 </head>
 <body>
 <%@include file="../home.jsp"%>
@@ -29,10 +25,12 @@
     <div class="col-md-2"></div>
     
     <div class="col-md-7">
+    <c:if test="${user != null}">
 	    <div id="topdiv">
 	   		<button type="button" class="btn btn-default btn-block" id="guestbookadd">방명록 쓰기</button>
 	    </div>
-	    
+	</c:if>
+	    <div style="height: 70px;"></div>
 	    <div id="table">
 			<div id="guestbooklist">
 	    	<c:forEach var="list" items="${guestbooklist}">
@@ -40,7 +38,16 @@
 	    		<p class="row1">
 	    	</c:if>
 	    	<span class="cell col1">
-	    		<cite>${list.content}</cite>
+	    			<span class="col-sm-6 col-md-4" style="width: 270px; height: 200px;">
+	    				<span class="thumbnail" style="height: 200px;">
+	    					<cite>${list.id}</cite><br/>
+	    					<span class="caption">
+	    					
+	    						<span>${list.content}</span> 
+	    					</span>
+	    				</span>
+	    			</span>
+	    		
 	    	</span>
 	    	<c:set var="i" value="${i+1}"/>
 	    	<c:if test="${i%j == 0}">
