@@ -40,7 +40,7 @@
 	    	<span class="cell col1">
 	    			<span class="col-sm-6 col-md-4" style="width: 270px; height: 200px;">
 	    				<span class="thumbnail" style="height: 200px;">
-	    					<cite>${list.id}</cite><br/>
+	    					<u><cite>${list.id}</cite>&emsp;&emsp;&emsp;&emsp;${list.insert_date}</u><br/><br/>
 	    					<span class="caption">
 	    					
 	    						<span>${list.content}</span> 
@@ -76,7 +76,7 @@
 				<div class="form-group">
 					<textarea class="form-control" id="content" name="content" placeholder="Content" required="required" rows="5"></textarea>
 				</div>
-				<button type="button" class="btn btn-default" id="guestbook" data-dismiss="modal"></button>
+				<button type="button" class="btn btn-default" id="guestbook" data-dismiss="modal">쓰기</button>
 			</form>
 			</div>
 		</div>
