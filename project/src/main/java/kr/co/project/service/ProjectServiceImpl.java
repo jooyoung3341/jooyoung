@@ -76,4 +76,43 @@ public class ProjectServiceImpl implements ProjectService {
 		String pno = request.getParameter("pno");
 		return projectDao.detail(Integer.parseInt(pno));
 	}
+	
+	//프로젝스 수정 폼
+	@Override
+	public Project updateView(HttpServletRequest request) {
+		String pno = request.getParameter("pno");
+		
+		//데이터 가져오는 메소드 호출해서 리턴
+		return projectDao.detail(Integer.parseInt(pno));
+	}
+	
+	//프로젝트 수정
+	@Override
+	public void update(MultipartHttpServletRequest request) {
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String pno = request.getParameter("pno");
+		MultipartFile image = request.getFile("image");
+		String uploadPath = request.getRealPath("resources/image");
+		UUID uid = UUID.randomUUID();
+		String filename = image.getOriginalFilename();
+		filename = uid + "_" + filename;
+		String filepath = uploadPath + "\\" + filename;
+		Project project = new Project();
+		File f = new File(filepath);
+		try {
+			image.transferTo(f);
+			project.setTitle(title);
+			project.setContent(content);
+			project.setImage(filename);
+			project.setPno(Integer.parseInt(pno));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		projectDao.update(project);		
+	}
+
+	
+	
+
 }

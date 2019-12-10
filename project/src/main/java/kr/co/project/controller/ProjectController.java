@@ -41,4 +41,18 @@ public class ProjectController {
 		attr.addFlashAttribute("pregistermsg", "프로젝트 등록 완료!");
 		return "redirect:project";
 	}
+	
+	//프로젝트 수정 폼
+	@RequestMapping(value="project/update", method=RequestMethod.GET)
+	public String update() {
+		return "project/update";
+	}
+	
+	//프로젝트 수정
+	@RequestMapping(value="project/update", method=RequestMethod.POST)
+	public String update(MultipartHttpServletRequest request) {
+		Project project = projectService.update(request);
+		return ;
+		
+	}
 }

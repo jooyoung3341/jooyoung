@@ -40,7 +40,10 @@
 	    	<span class="cell col1">
 	    			<span class="col-sm-6 col-md-4" style="width: 270px; height: 200px;">
 	    				<span class="thumbnail" style="height: 200px;">
-	    					<u><cite>${list.id}</cite>&emsp;&emsp;&emsp;&emsp;${list.insert_date}</u><br/><br/>
+	    					<span class="page-header">
+	    						${list.id}&emsp;&emsp;&emsp;&emsp;<smail>${list.insert_date}</smail><br/><br/>
+	    					</span>
+	    			<%-- 		<u><a class="btn btn-primary btn-lg" href="#" role="button">${list.id}</a>&emsp;&emsp;&emsp;&emsp;<span class="badge">${list.insert_date}</span></u><br/><br/> --%>
 	    					<span class="caption">
 	    					
 	    						<span>${list.content}</span> 

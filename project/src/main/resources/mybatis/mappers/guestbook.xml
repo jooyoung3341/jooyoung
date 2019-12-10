@@ -10,23 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	values(#{id}, #{content}, #{insert_date})
 </insert>
 
-<!-- 프로젝트 목록 -->
+<!-- 방명록 목록 -->
 <select id="guestbooklist" resultType="Guestbook">
 	select gno, id, content, insert_date
 	from guestbook
 </select>
 
-<!--프로젝트 상세보기  -->
-<select id="detail" parameterType="java.lang.Integer" resultType="Project">
-	select title, image, content
-	from project
-	where pno = #{pno}
-</select>
-
-<!-- 로그인 -->
-<select id="login" parameterType="java.lang.String" resultType="User">
-	select *
-	from user
-	where id = #{id}
-</select>
 </mapper>

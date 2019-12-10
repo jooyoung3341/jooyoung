@@ -19,4 +19,10 @@ public interface ProjectService {
 	
 	//프로젝트 상세보기
 	public Project detail(HttpServletRequest request);
+	
+	//프로젝트 수정 폼
+	public Project updateView(HttpServletRequest request);
+	
+	//프로젝트 수정
+	public void update(MultipartHttpServletRequest request);
 }

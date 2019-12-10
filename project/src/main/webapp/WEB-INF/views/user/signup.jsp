@@ -17,7 +17,7 @@
     	<div class="row">
     	<div class="col-md-3"></div>
     	<div class="col-md-6">
-    	<form class="form-horizontal" method="post" onsubmit="return signupcheck()">
+    	<form class="form-horizontal" method="post" onsubmit="return signupcheck()" action="signup">
 			<div class="form-group">
 				<label for="exampleInputName2">사용자 아이디</label>
 				<input type="text" class="form-control" id="id" name="id" placeholder="User ID" onblur="confirmId()">
@@ -59,8 +59,8 @@ function confirmId(){
 	var id = $("#id").val();
 	//var id = document.getElementById("id").value;
 	//메시지 출력 영역 가져오기
-	var iddiv = $("#iddiv").val();
-	//var iddiv = document.getElementById("iddiv");
+	//var iddiv = $("#iddiv").attr("id");
+	var iddiv = document.getElementById("iddiv");
 	$.ajax({
 			url : 'idcheck',
 			data : { "id" : id}, 
@@ -68,12 +68,12 @@ function confirmId(){
 			success : function(data){
 					if(data.result == true){
 						iddiv.innerHTML = "사용 가능한 아이디";
-						iddiv.style.color = 'blue';
+						iddiv.style.color = "blue";
 						idcheck = true;
 					}
 					else{
 						iddiv.innerHTML = "사용 불가능한 아이디";
-						iddiv.style.color = 'red';
+						iddiv.style.color = "red";
 						idcheck = false;
 						}
 				}
@@ -82,8 +82,9 @@ function confirmId(){
 }
 
 function signupcheck(){
+	var id = document.getElementById("id");
 	//idcheck의 값이 false 이면 서버로 전송하지 않기
-	if(idcheck == false){
+	if(idcheck == false || id.value.length < 1){
 			alert("아이디를 입력해야 합니다.");
 			document.getElementById("id").focus();
 			return false;
@@ -96,10 +97,15 @@ function signupcheck(){
 			return false;
 		}
 
-	//var pw = document.getElementById("pw");
-	var pw = $("#pw").val();
-	var confirmpw = $("#confirmpw").val();
-	//var confirmpw = document.getElementById("confirmpw");
+	var pw = document.getElementById("pw");
+	if(pw.value.length < 1){
+			alert("비밀번호를 입력하셔야 합니다.");
+			pw.focus();
+			return false;
+		}
+	//var pw = $("#pw").val();
+	//var confirmpw = $("#confirmpw").val();
+	var confirmpw = document.getElementById("confirmpw");
 	//비밀번호 정규식 - 숫자, 영문자 5자이상
 	var p1 = /[0-9]/;
 	var p2 = /[a-zA-Z]/;

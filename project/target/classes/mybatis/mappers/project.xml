@@ -18,9 +18,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--프로젝트 상세보기  -->
 <select id="detail" parameterType="java.lang.Integer" resultType="Project">
-	select title, image, content
+	select title, image, content, pno
 	from project
 	where pno = #{pno}
 </select>
 
+<!-- 프로젝트 수정 -->
+<update id="update" parameterType="java.lang.Integer">
+	update project
+	set title = #{title}, content = ${content}, image = #{image}
+	where pno = #{pno}
+</update>
 </mapper>

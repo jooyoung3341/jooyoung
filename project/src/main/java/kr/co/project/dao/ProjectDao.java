@@ -28,4 +28,9 @@ public class ProjectDao {
 	public Project detail(int pno) {
 		return sqlSession.selectOne("project.detail", pno);
 	}
+	
+	//프로젝트 수정
+	public void update(Project project) {
+		sqlSession.update("project.update", project);
+	}
 }

@@ -3,14 +3,16 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+
+<!-- xmlns:p="http://www.springframework.org/schema/p"
+	  	xmlns:aop="http://www.springframework.org/schema/aop" 
+	  	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd" -->
+
+	<!-- 	DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Spring 프로젝트에서 MVC 관련 어노테이션을 사용할 수 있도록 해주는 설정 -->
 	<mvc:annotation-driven />
@@ -36,4 +38,14 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
+	
+	<beans:bean id="adminInterceptor" class="kr.co.project.interceptor.AdminInterceptor"/>
+	<!-- Interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/project/register"/>
+					
+			<beans:ref bean="adminInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans:beans>

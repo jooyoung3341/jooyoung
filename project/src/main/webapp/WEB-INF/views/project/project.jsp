@@ -73,7 +73,9 @@
         		<a href="#"><img src="${pageContext.request.contextPath}/resources/image/${list.image}"/ width="320" height="250"
         							     id="detail${status.index}" value="${list.pno}" class="detail"></a>
         		&nbsp&nbsp&nbsp
-        		<cite id="title">${list.title} / ${list.pno}</cite>
+        		<cite id="title">${list.title} / ${list.pno}</cite><br/><br/>
+        		<button class="btn btn-warning" id="updatebtn">수정</button>
+        		<button class="btn btn-danger" id="deletebtn">삭제</button>
         	</span>
  	    <c:set var="i" value="${i+1}"/>      
         <c:if test="${i%j == 0}">
@@ -154,7 +156,10 @@ alert("${pregistermsg}");
 		});
 		})
 	});
-		
+
+	$(document).ready(function(){
+			location.href="update?pno="+${projectlist.pno};
+		})
 
 </script>
 </body>

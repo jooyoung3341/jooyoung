@@ -1,5 +1,8 @@
 package kr.co.project.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -46,8 +49,15 @@ public class UserController {
 		if(user == null) {
 			attr.addFlashAttribute("loginmsg", "아이디 비밀번호 확인바랍니다.");
 			return "redirect:/user/login";
+			/*
+			 * } if(request.getParameter("id").equals("admin")) { Map<String, Object> map =
+			 * new HashMap<String, Object>(); map.put("admin", "admin");
+			 * session.setAttribute("admin", map); return "redirect:/";
+			 */
 		}else
 			session.setAttribute("user", user);
+			session.setAttribute("id", user.getId());
+		
 			return "redirect:/";
 	}
 	
