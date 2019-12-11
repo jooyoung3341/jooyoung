@@ -157,7 +157,9 @@ alert("${pregistermsg}");
 		})
 	});
 
+	//2019-12-11 수정
 	$(document).ready(function(){
+		$('a').onclick
 			location.href="update?pno="+${projectlist.pno};
 		})
 
