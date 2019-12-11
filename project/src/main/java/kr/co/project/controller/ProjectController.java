@@ -44,15 +44,16 @@ public class ProjectController {
 	
 	//프로젝트 수정 폼
 	@RequestMapping(value="project/update", method=RequestMethod.GET)
-	public String update() {
+	public String update(HttpServletRequest request, Model model) {
+		Project project = projectService.updateView(request);
+		model.addAttribute("project", project);
 		return "project/update";
 	}
 	
 	//프로젝트 수정
 	@RequestMapping(value="project/update", method=RequestMethod.POST)
 	public String update(MultipartHttpServletRequest request) {
-		Project project = projectService.update(request);
-		return ;
-		
+		projectService.update(request);
+		return "redirect:project";
 	}
 }

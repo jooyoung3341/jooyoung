@@ -112,7 +112,4 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDao.update(project);		
 	}
 
-	
-	
-
 }

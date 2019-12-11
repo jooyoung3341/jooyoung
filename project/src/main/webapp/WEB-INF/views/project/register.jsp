@@ -24,19 +24,23 @@
 				<label for="exampleInputName2">아이디</label>
 				<input type="text" class="form-control" placeholder="${user.id}" readonly>
 			</div>
+			
 			<div class="form-group">
 				<label for="exampleInputName2">제목</label>
 				<input type="text" class="form-control" name="title" placeholder="Title" required="required">
 			</div>
+			
 			<div class="form-group">
 				<label for="exampleInputName2">프로젝트 이미지</label>
 				<input type="file" name="image" id="image" required="required">
 				<img id="img" width="300" height="300" border="1"/>
 			</div>
+			
 			<div class="form-group">
-				<label for="exampleInputNam@e2">프로젝트 내용</label>
+				<label for="exampleInputName2">프로젝트 내용</label>
 				<textarea class="form-control" name="content" placeholder="Content" required="required" rows="5" ></textarea>
 			</div>
+			
 			<button type="submit" class="btn btn-default">작성완료</button>
 		</form>
 		</div>
@@ -48,7 +52,7 @@
     <div class="col-md-2"></div>
 </div>
 <script>
-	var filename = '';
+	var filename = "";
 
 	document.getElementById("image").addEventListener('change', function(){
 		readURL(this);	

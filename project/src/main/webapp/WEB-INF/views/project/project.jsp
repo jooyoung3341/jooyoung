@@ -74,7 +74,7 @@
         							     id="detail${status.index}" value="${list.pno}" class="detail"></a>
         		&nbsp&nbsp&nbsp
         		<cite id="title">${list.title} / ${list.pno}</cite><br/><br/>
-        		<button class="btn btn-warning" id="updatebtn">수정</button>
+        		<button class="btn btn-warning" id="updatebtn" value="${list.pno}">수정</button>
         		<button class="btn btn-danger" id="deletebtn">삭제</button>
         	</span>
  	    <c:set var="i" value="${i+1}"/>      
