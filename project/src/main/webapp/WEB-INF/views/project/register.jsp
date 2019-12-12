@@ -59,7 +59,7 @@
 	});
 
 	function readURL(input){
-		if(input.files && input.files[0]){
+		if(input.files && input.files[0]){ 
 			filename = input.files[0].name;
 			var ext = filename.substr(filename.length - 3, filename.length);
 			var isCheck = false;

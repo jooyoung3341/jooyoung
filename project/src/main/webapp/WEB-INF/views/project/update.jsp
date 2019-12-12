@@ -15,8 +15,9 @@
         <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-5">
-		
-		<form class="form-horizontal" method="post" entype="multipart/form-data">
+																			
+		<form class="form-horizontal" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="pno" value="${project.pno}"/>
 			<div class="form-group">
 				<label for="exampleInputName2">아이디</label>
 				<input type="text" class="form-control" placeholder="${user.id}" readonly>
@@ -29,23 +30,25 @@
 			
 			<div class="form-group">
 				<label for="exampleInputName2">프로젝트 이미지</label>
-				<input type="file" name="image" id="image" required="required">
-				<img id="img" width="300" height="300" border="1"/>
+				<input type="file" name="image" id="image" required="required" value="${project.image}">
+				<img id="img" width="300" height="300" border="1" src="../../../resources/image/${project.image}"/>
 			</div>
 			
 			<div class="form-group">
 				<label for="exampleInputName2">프로젝트 내용</label>
 				<textarea class="form-control" name="content" required="required" rows="5">${project.content}</textarea>
 			</div>
+			
+			<button type="submit" class="btn btn-default">수정</button>
 		</form>
-		
+ 	
         </div>
 
         <div class="col-md-4"></div>
-    </div>
-
+    	</div>
+	</div>
+	
     <div class="col-md-2"></div>
-</div>
 </div>
 <script>
 var filename = "";
@@ -73,6 +76,7 @@ function readURL(input){
 		reader.readAsDataURL(input.files[0]);
 		}	
 	};
+
 </script>
 
 </body>

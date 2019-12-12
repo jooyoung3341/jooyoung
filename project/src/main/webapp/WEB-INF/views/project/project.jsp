@@ -74,7 +74,7 @@
         							     id="detail${status.index}" value="${list.pno}" class="detail"></a>
         		&nbsp&nbsp&nbsp
         		<cite id="title">${list.title} / ${list.pno}</cite><br/><br/>
-        		<button class="btn btn-warning" id="updatebtn" value="${list.pno}">수정</button>
+        		<button class="btn btn-warning" id="updatebtn${status.index}" value="${list.pno}" name="update">수정</button>
         		<button class="btn btn-danger" id="deletebtn">삭제</button>
         	</span>
  	    <c:set var="i" value="${i+1}"/>      
@@ -159,9 +159,12 @@ alert("${pregistermsg}");
 
 	//2019-12-11 수정
 	$(document).ready(function(){
-		$('a').onclick
-			location.href="update?pno="+${projectlist.pno};
-		})
+		$("button[name=update]").click(function(){
+			var $update = $(this).attr("id");
+			var pno = $("#"+$update).attr("value");
+			location.href="update?pno="+pno;
+		});
+	});
 
 </script>
 </body>

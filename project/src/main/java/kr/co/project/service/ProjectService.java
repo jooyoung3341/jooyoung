@@ -25,4 +25,7 @@ public interface ProjectService {
 	
 	//프로젝트 수정
 	public void update(MultipartHttpServletRequest request);
+	
+	//프로젝트 삭제
+	public void delete(HttpServletRequest request);
 }

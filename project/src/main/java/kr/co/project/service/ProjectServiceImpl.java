@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 
 import kr.co.project.dao.ProjectDao;
 import kr.co.project.domain.Project;
@@ -22,6 +23,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectDao projectDao;
 
+	//프로젝트 등록
 	@Override
 	public void register(MultipartHttpServletRequest request) {
 		String title = request.getParameter("title");
@@ -39,7 +41,7 @@ public class ProjectServiceImpl implements ProjectService {
 		 * 프로젝트 내의 image 디렉토리의 절대 경로를 만들기
 		*/
 		//getRealPath("/"); 는 webapp폴더까지를 의미
-		@SuppressWarnings("deprecation")
+//		@SuppressWarnings("deprecation")
 		String uploadPath = request.getRealPath("resources/image");
 		//UUID : 중복되지 않은 고유한 키 값
 		UUID uid = UUID.randomUUID();
@@ -92,10 +94,13 @@ public class ProjectServiceImpl implements ProjectService {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String pno = request.getParameter("pno");
+		System.out.println(title + content + pno);
 		MultipartFile image = request.getFile("image");
 		String uploadPath = request.getRealPath("resources/image");
+		
 		UUID uid = UUID.randomUUID();
 		String filename = image.getOriginalFilename();
+		
 		filename = uid + "_" + filename;
 		String filepath = uploadPath + "\\" + filename;
 		Project project = new Project();
@@ -106,10 +111,18 @@ public class ProjectServiceImpl implements ProjectService {
 			project.setContent(content);
 			project.setImage(filename);
 			project.setPno(Integer.parseInt(pno));
+			projectDao.update(project);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		projectDao.update(project);		
+
+	}
+
+	@Override
+	public void delete(HttpServletRequest request) {
+		String pno = request.getParameter("pno");
+		projectDao.delete(Integer.parseInt(pno));
+		
 	}
 
 }

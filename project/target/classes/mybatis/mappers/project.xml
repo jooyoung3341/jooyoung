@@ -24,9 +24,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <!-- 프로젝트 수정 -->
-<update id="update" parameterType="java.lang.Integer">
+<update id="update" parameterType="Project">
 	update project
-	set title = #{title}, content = ${content}, image = #{image}
+	set title = #{title}, content = #{content}, image = #{image}
 	where pno = #{pno}
 </update>
+
+<!-- 프로젝트 삭제 -->
+<delete id="delete" parameterType="java.lang.Integer">
+	delete from project
+	where pno = #{pno}
+</delete>
 </mapper>

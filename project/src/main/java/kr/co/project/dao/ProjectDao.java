@@ -15,8 +15,8 @@ public class ProjectDao {
 	private SqlSession sqlSession;
 	
 	//프로젝트 등록
-	public int register(Project project) {
-		return sqlSession.insert("project.register", project);
+	public void register(Project project) {
+		sqlSession.insert("project.register", project);
 	}
 	
 	//프로젝트 목록
@@ -32,5 +32,10 @@ public class ProjectDao {
 	//프로젝트 수정
 	public void update(Project project) {
 		sqlSession.update("project.update", project);
+	}
+	
+	//프로젝트 삭제
+	public void delete(int pno) {
+		sqlSession.delete("project.delete", pno);
 	}
 }

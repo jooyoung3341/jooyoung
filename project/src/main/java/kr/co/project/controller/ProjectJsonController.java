@@ -22,4 +22,6 @@ public class ProjectJsonController {
 		return project;
 	}
 	
+	//프로젝트 삭제
+	
 }
