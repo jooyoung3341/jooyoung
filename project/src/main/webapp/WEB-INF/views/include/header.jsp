@@ -29,7 +29,7 @@
 
 		<ul class="nav navbar-nav navbar-right">
 		<c:if test="${user != null}">
-			<li>${user.id}님</li>
+			<li><a href="#">${user.id}</a></li>
 				<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
 			<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
 			<li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>

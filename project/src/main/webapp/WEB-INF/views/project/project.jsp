@@ -74,8 +74,10 @@
         							     id="detail${status.index}" value="${list.pno}" class="detail"></a>
         		&nbsp&nbsp&nbsp
         		<cite id="title">${list.title} / ${list.pno}</cite><br/><br/>
+        		<c:if test="${user.id == 'admin'}">
         		<button class="btn btn-warning" id="updatebtn${status.index}" value="${list.pno}" name="update">수정</button>
-        		<button class="btn btn-danger" id="deletebtn">삭제</button>
+        		<button class="btn btn-danger" id="deletebtn${status.index}" value="${list.pno}" name="delete">삭제</button>
+        		</c:if>
         	</span>
  	    <c:set var="i" value="${i+1}"/>      
         <c:if test="${i%j == 0}">
@@ -95,27 +97,25 @@
      
          	<div class="row">
          		 <div class="col-md-3">
-         		 	<div id="imgdiv">
+         		 	<div id="modalimg">
          		 	</div>
          		 </div> 
          		 
          		 <div class="col-md-6" id="center">
          		 	<div class="container" id="modaltitle"></div>
          		 	<div class="container" id="modalcontent">&nbsp&nbsp
-         		 		<div id="footer">
-         		 			<button type="button" class="btn btn-default">Link</button>
-         		 			<button type="button" class="btn btn-default">Git</button>
-         		 		</div>
         		 </div>
-        		
+        		<div id="footer">
+        	
+        			<div id="modallink"></div>
+        					<div id="modalgit"></div><!-- 
+         		 			<button type="button" class="btn btn-default" id="modallink" onclick="">Link</button>
+         		 			<button type="button" class="btn btn-default" id="modalgit" onclick="">Git</button> -->
+         		 		</div>
          		 </div> 
          		 
          		 <div class="col-md-2" id="right">
-         		 	<p id="modalversion">
-       
-         		 	zzzzzs dkflj ksdlafjkldsjfklsdajflksj dklfs ldafkl skldjlfjl sdajfl
-    
-         		 			
+         		 	<p id="modaltechnology">
          		 	</p>
          		 	<div id="footer1">
          		 		<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
@@ -139,15 +139,24 @@ alert("${pregistermsg}");
 		$("img").click(function(){
 			var $detail = $(this).attr('id');
 			var pno = $('#'+$detail).attr('value');
-		
 		$.ajax({
 			url : "detail",
 			data : {"pno" : pno},
 			dataType : "json",
-			success : function(data){											       
-				document.getElementById("imgdiv").innerHTML = "<img src='${pageContext.request.contextPath}/resources/image/"+data.image+"'/ width='250' height='250'>";
-				document.getElementById("modaltitle").innerHTML = "<h3>&nbsp&nbsp"+data.title+"</h3>";
-			/* 	document.getElementById("modalcontent").innerHTML = "<small>&nbsp&nbsp"+data.content+"</small>";  */
+			success : function(data){
+				$("#modalimg").html("<img src='${pageContext.request.contextPath}/resources/image/"+data.image+"'/ width='250' height='250'>");
+				$("#modaltitle").html("<h3>&nbsp&nbsp"+data.title+"</h3>");
+				$("#modalcontent").html("<h5>&nbsp&nbsp"+data.content+"</h5>");
+				$("#modaltechnology").html("<h5>"+data.technology+"</h5>");
+
+		 		$("#modallink").html("<button type='button' class='btn btn-default' onClick="+"window.open(' "+data.link+" ')>Link</button>");
+				
+		 		/* $("#modallink").attr("onclick", git);
+				$("#modalgit").attr("onclick", git); 
+				 */
+				/* document.getElementById("imgdiv").innerHTML = "<img src='${pageContext.request.contextPath}/resources/image/"+data.image+"'/ width='250' height='250'>";
+				document.getElementById("modaltitle").innerHTML = "<h3>&nbsp&nbsp"+data.title+"</h3>"; */
+				//document.getElementById("modalcontent").innerHTML = "<small>&nbsp&nbsp"+data.content+"</small>"; 
 				$("#myModal").modal();      
 				},
 			error : function(){
@@ -157,6 +166,10 @@ alert("${pregistermsg}");
 		})
 	});
 
+	function git(data){
+		$("modalgit").html("window.open("+data.git+")");
+		
+		}
 	//2019-12-11 수정
 	$(document).ready(function(){
 		$("button[name=update]").click(function(){
@@ -165,6 +178,16 @@ alert("${pregistermsg}");
 			location.href="update?pno="+pno;
 		});
 	});
+
+	
+	$(document).ready(function(){
+		$("button[name=delete]").click(function(){
+			var $delete = $(this).attr("id");
+			var pno = $("#"+$delete).attr("value");
+			location.href="delete?pno="+pno;
+		});
+	});
+	
 
 </script>
 </body>

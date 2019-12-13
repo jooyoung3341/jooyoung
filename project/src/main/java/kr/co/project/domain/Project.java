@@ -6,6 +6,10 @@ public class Project {
 	private String title;
 	private String content;
 	private String image;
+	private String technology;
+	private String git;
+	private String link;
+	
 	public int getPno() {
 		return pno;
 	}
@@ -36,12 +40,28 @@ public class Project {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public String getTechnology() {
+		return technology;
+	}
+	public void setTechnology(String technology) {
+		this.technology = technology;
+	}
+	public String getGit() {
+		return git;
+	}
+	public void setGit(String git) {
+		this.git = git;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
 	@Override
 	public String toString() {
 		return "Project [pno=" + pno + ", id=" + id + ", title=" + title + ", content=" + content + ", image=" + image
-				+ "]";
+				+ ", technology=" + technology + ", git=" + git + ", link=" + link + "]";
 	}
-	
-	
-	
+		
 }

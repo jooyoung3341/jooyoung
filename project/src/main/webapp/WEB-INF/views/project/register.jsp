@@ -37,8 +37,23 @@
 			</div>
 			
 			<div class="form-group">
+				<label for="exampleInputName2">프로젝트 기술</label>
+				<textarea class="form-control" name="technology" placeholder="Technology" required="required" rows="4"></textarea>
+			</div>
+			
+			<div class="form-group">
 				<label for="exampleInputName2">프로젝트 내용</label>
 				<textarea class="form-control" name="content" placeholder="Content" required="required" rows="5" ></textarea>
+			</div>
+			
+			<div class="form-group">
+				<label for="exampleInputName2">Git 주소</label>
+				<input type="text" class="form-control" name="git" placeholder="Git" required="required">
+			</div>
+			
+			<div class="form-group">
+				<label for="exampleInputName2">Link 주소</label>
+				<input type="text" class="form-control" name="link" placeholder="Link" required="required">
 			</div>
 			
 			<button type="submit" class="btn btn-default">작성완료</button>

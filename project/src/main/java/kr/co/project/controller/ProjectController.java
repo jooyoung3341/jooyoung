@@ -56,4 +56,16 @@ public class ProjectController {
 		projectService.update(request);
 		return "redirect:project";
 	}
+	
+	//프로젝트 삭제 폼
+	@RequestMapping(value="project/delete", method=RequestMethod.GET)
+	public String delete() {
+		return "project/delete";
+	}
+	//프로젝트 삭제
+	@RequestMapping(value="project/delete", method=RequestMethod.POST)
+	public String delete(HttpServletRequest request) {
+		projectService.delete(request);
+		return "redirect:project";
+	}
 }

@@ -44,6 +44,8 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/project/register"/>
+			<mvc:mapping path="/project/delete"/>
+			
 					
 			<beans:ref bean="adminInterceptor"/>
 		</mvc:interceptor>

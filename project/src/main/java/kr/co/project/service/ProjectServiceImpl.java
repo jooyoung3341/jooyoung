@@ -28,6 +28,9 @@ public class ProjectServiceImpl implements ProjectService {
 	public void register(MultipartHttpServletRequest request) {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String technology = request.getParameter("technology");
+		String git = request.getParameter("git");
+		String link = request.getParameter("link");
 		//로그인 한 유저의 id 가져오기 
 		HttpSession session= request.getSession();
 		User user = (User) session.getAttribute("user");
@@ -94,6 +97,10 @@ public class ProjectServiceImpl implements ProjectService {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String pno = request.getParameter("pno");
+		String technology = request.getParameter("technology");
+		String git = request.getParameter("git");
+		String link = request.getParameter("link");
+		
 		System.out.println(title + content + pno);
 		MultipartFile image = request.getFile("image");
 		String uploadPath = request.getRealPath("resources/image");
@@ -111,6 +118,10 @@ public class ProjectServiceImpl implements ProjectService {
 			project.setContent(content);
 			project.setImage(filename);
 			project.setPno(Integer.parseInt(pno));
+			project.setTechnology(technology);
+			project.setGit(git);
+			project.setLink(link);
+			
 			projectDao.update(project);
 		} catch (Exception e) {
 			System.out.println(e);
@@ -118,11 +129,11 @@ public class ProjectServiceImpl implements ProjectService {
 
 	}
 
+	//프로젝트 삭제
 	@Override
 	public void delete(HttpServletRequest request) {
 		String pno = request.getParameter("pno");
 		projectDao.delete(Integer.parseInt(pno));
-		
 	}
 
 }

@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 프로젝트 등록 -->
 <insert id="register" parameterType="Project">
-	insert into project(id, title, content, image)
-	values(#{id}, #{title}, #{content}, #{image})
+	insert into project(id, title, content, image, technology, git, link)
+	values(#{id}, #{title}, #{content}, #{image}, #{technology}, #{git}, #{link})
 </insert>
 
 <!-- 프로젝트 목록 -->
@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--프로젝트 상세보기  -->
 <select id="detail" parameterType="java.lang.Integer" resultType="Project">
-	select title, image, content, pno
+	select title, image, content, pno, technology, git, link
 	from project
 	where pno = #{pno}
 </select>
@@ -26,7 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 프로젝트 수정 -->
 <update id="update" parameterType="Project">
 	update project
-	set title = #{title}, content = #{content}, image = #{image}
+	set title = #{title}, content = #{content}, image = #{image}, technology = #{technology}, 
+		 git = #{git}, link = #{link}
 	where pno = #{pno}
 </update>
 
