@@ -49,13 +49,9 @@ public class UserController {
 		if(user == null) {
 			attr.addFlashAttribute("loginmsg", "아이디 비밀번호 확인바랍니다.");
 			return "redirect:/user/login";
-			/*
-			 * } if(request.getParameter("id").equals("admin")) { Map<String, Object> map =
-			 * new HashMap<String, Object>(); map.put("admin", "admin");
-			 * session.setAttribute("admin", map); return "redirect:/";
-			 */
 		}else
 			session.setAttribute("user", user);
+			//interceptor admin 비교를 위해 따로 ID만 저장
 			session.setAttribute("id", user.getId());
 		
 			return "redirect:/";

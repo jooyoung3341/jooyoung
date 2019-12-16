@@ -40,7 +40,7 @@
 			</div>
 			
 			<button type="submit" class="btn btn-default">회원가입</button>
-	
+			<button type="button" class="btn btn-defalut" id="backbtn">뒤로가기</button>
 	</form>
 	</div>
 	<div class="col-md-3"></div>
@@ -129,7 +129,12 @@ function signupcheck(){
 			return false;
 		}
 }
-	
+
+	$(document).ready(function(){
+			$("#backbtn").click(function(){
+					location.href="../";
+				})
+		})
 </script>
 </body>
 </html>

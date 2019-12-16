@@ -12,22 +12,22 @@
     <div class="col-md-3"></div>
     
     <div class="col-md-6">
-    
     	<div class="row">
     	<div class="col-md-3"></div>
     	<div class="col-md-5">
     	
-
 		<form class="form-horizontal" method="post">
 			<div class="form-group">
 				<label for="exampleInputName2">사용자 아이디</label>
 				<input type="text" class="form-control" name="id" placeholder="User ID" required="required">
 			</div>
+			
 			<div class="form-group">
 				<label for="exampleInputName2">비밀번호</label>
 				<input type="password" class="form-control" name="pw" placeholder="User Paasword" required="required">
 			</div>
 			<button type="submit" class="btn btn-default">로그인</button>
+			<button type="button" class="btn btn-default" id="backbtn">뒤로가기</button>
 		</form>
 
 		</div>
@@ -42,5 +42,12 @@
 	alert("${loginmsg}");
 </script>
 </c:if>
+<script>
+	$(document).ready(function(){
+			$("#backbtn").click(function(){
+					location.href="../";
+				})
+		})
+</script>
 </body>
 </html>

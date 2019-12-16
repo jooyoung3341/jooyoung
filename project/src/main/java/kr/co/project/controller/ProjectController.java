@@ -28,6 +28,7 @@ public class ProjectController {
 		model.addAttribute("projectlist", projectlist);
 		return "project/project";
 	}
+	
 	//프로젝트 등록 폼
 	@RequestMapping(value="project/register", method=RequestMethod.GET)
 	public String register() {
@@ -62,6 +63,7 @@ public class ProjectController {
 	public String delete() {
 		return "project/delete";
 	}
+	
 	//프로젝트 삭제
 	@RequestMapping(value="project/delete", method=RequestMethod.POST)
 	public String delete(HttpServletRequest request) {

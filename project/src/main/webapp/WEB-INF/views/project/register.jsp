@@ -57,6 +57,7 @@
 			</div>
 			
 			<button type="submit" class="btn btn-default">작성완료</button>
+			<button type="button" class="btn btn-defalut" id="backbtn">뒤로가기</button>
 		</form>
 		</div>
 		
@@ -69,13 +70,18 @@
 <script>
 	var filename = "";
 
+	$("#image").on("change", function(){
+			readURL(this);
+		})/* 
 	document.getElementById("image").addEventListener('change', function(){
 		readURL(this);	
-	});
+	}); */
 
+	
 	function readURL(input){
 		if(input.files && input.files[0]){ 
 			filename = input.files[0].name;
+			//사진 뒤 3글자 가져와서 jpg, gif, png인지 확인
 			var ext = filename.substr(filename.length - 3, filename.length);
 			var isCheck = false;
 			if((ext.toLowerCase() == "jpg" || ext.toLowerCase() == "gif" || ext.toLowerCase() == "png")){
@@ -85,14 +91,23 @@
 					alert("jpg나 gif, png 만 업로드가 가능합니다.");
 					return;
 				};
+			//load 이벤트의 핸들러. 이 이벤트는 읽기 동작이 성공적으로 완료되었을 떄마다 발생한다.	
 			var reader = new FileReader();				
+			//읽기가 성공하면 읽기 결과를 표시한다.
 			reader.onload = function(e){
-					document.getElementById("img").src = e.target.result;
+				$("#img").attr("src", e.target.result);
+					/* document.getElementById("img").src = e.target.result; */
 				}
+			//readAsDataURL : 컨텐츠를 특정 Blob이나 File에서 읽어 오는 역할
 			reader.readAsDataURL(input.files[0]);
 			}	
 		};
 
+		$(document).ready(function(){
+				$("#backbtn").click(function(){
+						location.href="../project/project";
+					})
+			})
 		
 </script>
 </body>

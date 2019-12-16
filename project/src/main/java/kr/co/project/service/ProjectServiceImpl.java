@@ -62,6 +62,9 @@ public class ProjectServiceImpl implements ProjectService {
 				project.setTitle(title);
 				project.setContent(content);
 				project.setImage(filename);
+				project.setTechnology(technology);
+				project.setGit(git);
+				project.setLink(link);
 				projectDao.register(project);
 			} catch (Exception e) {
 				System.out.println(e);

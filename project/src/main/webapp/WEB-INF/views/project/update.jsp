@@ -55,6 +55,7 @@
 			</div>
 			
 			<button type="submit" class="btn btn-default">수정</button>
+			<button type="button" class="btn btn-default" id="backbtn">뒤로가기</button>
 		</form>
  	
         </div>
@@ -68,9 +69,12 @@
 <script>
 var filename = "";
 
-document.getElementById("image").addEventListener('change', function(){
+$("#image").on("change", function(){
+	readURL(this);
+})
+/* document.getElementById("image").addEventListener('change', function(){
 	readURL(this);	
-});
+}); */
 
 function readURL(input){
 	if(input.files && input.files[0]){
@@ -86,12 +90,18 @@ function readURL(input){
 			};
 		var reader = new FileReader();				
 		reader.onload = function(e){
-				document.getElementById("img").src = e.target.result;
+			$("#img").attr("src", e.target.result);
+				//document.getElementById("img").src = e.target.result;
 			}
 		reader.readAsDataURL(input.files[0]);
 		}	
 	};
 
+	$(document).ready(function(){
+			$("#backbtn").click(function(){
+					location.href="../project/project";
+				})
+		})
 </script>
 
 </body>

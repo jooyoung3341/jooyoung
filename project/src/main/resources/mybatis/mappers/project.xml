@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="projectlist" resultType="Project">
 	select pno, title, image
 	from project
+	order by pno desc
 </select>
 
 <!--프로젝트 상세보기  -->
