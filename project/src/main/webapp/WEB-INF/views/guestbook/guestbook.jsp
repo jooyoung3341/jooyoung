@@ -85,6 +85,7 @@
 	</div>
 
 <script>
+
 //방명록 쓰기 클릭 시 모달
 $(document).ready(function(){
 	$("#guestbookadd").click(function(){
